@@ -6,19 +6,19 @@
 int main(int argc, char *argv[]) {
     struct stat fileStat;
 
-    // 1. Kiểm tra tham số
+    // Kiểm tra tham số
     if (argc != 2) {
         printf("Usage: %s <file_path>\n", argv[0]);
         return 1;
     }
 
-    // 2. Lấy thông tin file bằng lstat
+    // Lấy thông tin file bằng lstat
     if (lstat(argv[1], &fileStat) == -1) {
         perror("lstat");
         return 1;
     }
 
-    // 3. In thông tin
+    // In thông tin
     printf("File Path: %s\n", argv[1]);
 
     // Loại file
