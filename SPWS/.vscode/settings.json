@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "actuators.h": "c",
+        "config.h": "c"
+    }
+}
