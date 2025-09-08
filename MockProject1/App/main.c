@@ -58,8 +58,8 @@ int main(void)
             printf("Data file to read from: ");
             scanf("%s", filename);
         
-            printf("MCU Sent Start Signal to DHT22\n");
-            printf("Reading 40 bits of data from DHT22\n");
+            printf("[MCU] Sent Start Signal to DHT22\n");
+            printf("[MCU] Reading 40 bits of data from %s\n", filename);
             DHT_Init(filename);
 
             float readTemp, readHumidity;
