@@ -1,6 +1,8 @@
 #include "DHT22.h"
 #include "Test_Service.h"
 
+#define FILENAME_MAX_LENGTH 100
+
 void menu()
 {
     printf("\n=== DHT22 SENSOR SIMULATION ===\n");
@@ -12,9 +14,8 @@ void menu()
 int main(void)
 {   
     int mode;
-    char filename[100];
+    char filename[FILENAME_MAX_LENGTH];
     
-   
     while (1) 
     {
         if (menu(), scanf("%d", &mode) != 1 || mode < 1 || mode > 3) 
@@ -26,7 +27,6 @@ int main(void)
     
     if (mode == 1) 
     {
-        
         float temp, humidity;
         
         printf("Name the data file: ");
@@ -51,27 +51,27 @@ int main(void)
         }
 
         Create_Data_Test(filename, temp, humidity);
-        printf("Test data file '%s' created with Temperature: %.1f C, Humidity: %.1f%%\r\n", filename, temp, humidity);
+        printf("Test data file '%s' created with Temperature: %.1f C, Humidity: %.1f%%\n", filename, temp, humidity);
     }
         else if (mode == 2)   
         {
             printf("Data file to read from: ");
             scanf("%s", filename);
         
-            printf("MCU Sent Start Signal to DHT22\r\n");
-            printf("Reading 40 bits of data from DHT22\r\n");
+            printf("MCU Sent Start Signal to DHT22\n");
+            printf("Reading 40 bits of data from DHT22\n");
             DHT_Init(filename);
 
             float readTemp, readHumidity;
             if (DHT_Read_Temperature(&readTemp) && DHT_Read_Humidity(&readHumidity)) 
             {
-                printf("Data read successfully!\r\n");
-                printf("Temperature: %.1f C\r\n", readTemp);
-                printf("Humidity: %.1f%%\r\n", readHumidity);
+                printf("Data read successfully!\n");
+                printf("Temperature: %.1f C\n", readTemp);
+                printf("Humidity: %.1f%%\n", readHumidity);
             } 
             else 
             {
-                printf("Failed to read temperature and humidity\r\n");
+                printf("Failed to read temperature and humidity\n");
             }
         }
     else 
